@@ -1,73 +1,97 @@
 # 🔐 AI Escape Room — The Locked Library
 
-An AI-powered interactive escape room developed using Python, Streamlit, and Google's Gemini API.
+An interactive escape room developed using Python, Streamlit, and Google's Gemini API.
 
-## Project Overview
+## 1. Project Overview
 
-The Locked Library is a text-based escape room where players explore a mysterious library, investigate objects, solve interconnected puzzles, collect clues, and attempt to unlock the exit door.
+The Locked Library is an AI-assisted escape room where players explore a mysterious library, interact with objects, solve interconnected puzzles, collect a brass key, and unlock the exit door.
 
-The project is developed in two versions to demonstrate the differences between AI-managed gameplay and structured application-controlled game logic.
+The project includes two versions demonstrating the development of an interactive application from a basic prototype into a more advanced, reliable game.
 
-## Technologies Used
+## 2. Project Objectives
 
-- Python
-- Streamlit
-- Google Gemini API
-- Google Gen AI Python SDK
-- python-dotenv
-- Git and GitHub
+- Develop an interactive escape room using Streamlit.
+- Integrate Google Gemini as an AI Game Master.
+- Implement clickable objects and puzzle-solving interactions.
+- Manage player progress using Streamlit Session State.
+- Validate puzzle solutions using Python.
+- Improve the user interface, inventory management, and error handling between versions.
 
-## Version 1 — LLM-Controlled Escape Room
+## 3. Technologies Used
 
-**Status: In Development**
+- **Python:** Application development and puzzle logic.
+- **Streamlit:** Interactive web interface.
+- **Google Gemini API:** AI-powered Game Master.
+- **Google Gen AI SDK:** Gemini integration.
+- **python-dotenv:** Environment variable management.
+- **HTML, CSS, and SVG:** Interface styling and graphical elements.
+- **Git and GitHub:** Version control and project portfolio.
 
-Version 1 uses Gemini as an AI Game Master to interpret player commands, generate responses, and manage puzzle progression through conversation history.
+## 4. Version 1 — Interactive Prototype
 
-### Implemented Features
+**Status: Implemented**
 
-- Streamlit-based interactive interface
-- Gemini API integration
-- Game Master system prompt
-- Natural-language player commands
-- Conversation memory using Streamlit Session State
-- Restart Game functionality
-- Automatic opening scene
-- Initial escape completion detection
+Version 1 introduces the core interactive escape room experience with a simple library interface.
 
-### Escape Room Objects
+### Features
 
-1. Bookshelf
-2. Wooden desk
-3. Painting
-4. Locked drawer
-5. Grandfather clock
-6. Exit door
+- Basic interactive Streamlit interface.
+- Four clickable objects: Bookshelf, Desk Drawer, Grandfather Clock, and Exit Door.
+- Python-validated puzzle solutions.
+- Brass key collection.
+- Basic inventory and progress tracking.
+- Gemini AI Game Master.
+- Local hints when Gemini is unavailable.
+- Conversation memory.
+- Restart Game functionality.
+- Escape completion screen.
 
-### Puzzle Structure
+## 5. Version 2 — Cinematic Escape Room
 
-Players must discover a bookshelf combination, unlock a drawer, collect a brass key, investigate a grandfather clock, and obtain the final exit code.
+**Status: Implemented and gameplay-tested**
 
-### Current Limitations
+Version 2 improves the initial prototype through enhanced presentation, more structured game logic, and stronger interaction handling.
 
-- Gemini responses can be slow, sometimes exceeding two minutes.
-- Puzzle progression is controlled by the language model rather than independently validated Python state.
-- Complete gameplay and adversarial testing are pending.
-- Escape completion detection requires further testing.
+### Improvements
 
-## Version 2 — Structured Game State
+- Cinematic library scene with SVG graphics.
+- Improved visual design and object selection.
+- Structured Python-managed game state.
+- Explicit inventory requirements.
+- Deterministic puzzle validation.
+- Improved puzzle progression and action restrictions.
+- Gemini AI Mode and Local Mode.
+- Automatic fallback when Gemini requests fail.
+- Visual progress tracking.
+- Improved restart functionality.
+- Victory screen.
 
-**Status: Planned**
+## 6. Version 1 vs Version 2
 
-Version 2 will improve reliability by introducing:
+| Feature | Version 1 | Version 2 |
+|---|---|---|
+| Interface | Simple interactive library | Cinematic illustrated library |
+| Object interaction | Clickable buttons | Enhanced object interactions |
+| Puzzle validation | Basic Python validation | Stronger state-dependent validation |
+| Inventory | Simple key tracking | Enforced inventory prerequisites |
+| Game Master | Gemini with local hints | Gemini and selectable Local Mode |
+| Error handling | Basic fallback | Improved automatic fallback |
+| Game progress | Basic progress indicator | Enhanced progress display |
+| Restart | Supported | Supported |
+| Gameplay testing | Basic manual testing | Seven final gameplay tests passed |
 
-- Python-managed game state
-- Explicit inventory management
-- Deterministic puzzle validation
-- Action validation and error handling
-- Improved protection against invalid or contradictory player actions
-- Comparative testing against Version 1
+## 7. Escape Room Gameplay
 
-## Project Structure
+The player must investigate four main objects:
+
+1. **Bookshelf:** Discover the combination using numbered books.
+2. **Desk Drawer:** Unlock the drawer and collect the brass key.
+3. **Grandfather Clock:** Use the brass key to reveal the exit code.
+4. **Exit Door:** Enter the correct code to escape.
+
+The puzzles must be completed in the correct sequence.
+
+## 8. Project Structure
 
 ```text
 AI-Escape-Room/
@@ -76,43 +100,54 @@ AI-Escape-Room/
 │   ├── game_prompt.py
 │   ├── requirements.txt
 │   └── test_gemini.py
+├── version2/
+│   └── app.py
+├── requirements.txt
 ├── .env.example
 ├── .gitignore
 └── README.md
 ```
 
-## Installation and Setup
+The structure above shows the main project files. Additional supporting files may be included.
 
-### 1. Clone the repository
+## 9. Installation and Setup
+
+### Step 1 — Clone the Repository
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/AI-Escape-Room.git
 cd AI-Escape-Room
 ```
 
-Replace `YOUR_USERNAME` with the repository owner's GitHub username.
+Replace `YOUR_USERNAME` with the actual GitHub username and use the correct repository name.
 
-### 2. Create a virtual environment
+### Step 2 — Create a Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-Activate it on Windows PowerShell:
+Activate the environment on Windows PowerShell:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 3. Install dependencies
+### Step 3 — Install Dependencies
 
 ```bash
-python -m pip install -r version1/requirements.txt
+python -m pip install -r requirements.txt
 ```
 
-### 4. Configure Gemini
+Required libraries:
 
-Create a `.env` file in the project root using `.env.example` as a template.
+- streamlit
+- google-genai
+- python-dotenv
+
+### Step 4 — Configure Gemini
+
+Create a `.env` file in the project root:
 
 ```env
 GEMINI_API_KEY=your_api_key_here
@@ -121,36 +156,65 @@ GEMINI_MODEL=your_available_gemini_model
 
 Use a Gemini model available to your API key.
 
-Never commit your actual `.env` file or API key.
+Never upload your actual `.env` file to GitHub.
 
-### 5. Run the application
+The applications support local hints or Local Mode when Gemini is unavailable.
+
+## 10. Running the Applications
+
+### Run Version 1
 
 ```bash
 python -m streamlit run version1/app.py
 ```
 
-Open the local Streamlit URL displayed in the terminal, usually `http://localhost:8501`.
+### Run Version 2
 
-## Development Progress
+```bash
+python -m streamlit run version2/app.py
+```
 
-| Component | Status |
-|---|---|
-| Project setup | Completed |
-| Streamlit interface | Implemented |
-| Gemini integration | Implemented |
-| Game Master prompt | Implemented |
-| Conversation memory | Implemented |
-| Restart functionality | Implemented |
-| Escape completion detection | Initial implementation |
-| Performance optimization | Pending |
-| Complete gameplay testing | Pending |
-| Version 2 | Planned |
-| Final comparison and report | Pending |
+Open the local URL displayed by Streamlit, usually `http://localhost:8501`.
 
-## Academic Purpose
+Stop the running application using `Ctrl + C` before launching the other version on the same port.
 
-This project demonstrates the capabilities and limitations of large language models in interactive applications. Version 1 explores LLM-controlled gameplay, while Version 2 will investigate whether structured Python state and validation improve reliability, consistency, and robustness.
+## 11. Testing
 
-## Development Status
+Version 2 passed seven final manual gameplay tests, covering normal puzzle progression, puzzle restrictions, inventory requirements, escape completion, and restart behavior.
 
-The application is under active development. Features, documentation, tests, and implementation details will be updated through subsequent GitHub commits.
+Version 1 was also launched successfully following its interactive interface update.
+
+Automated test coverage and formal usability evaluation have not yet been completed.
+
+## 12. Known Limitations
+
+- Gemini API requests may experience latency or temporary service failures.
+- AI-generated responses may occasionally be inconsistent.
+- Local gameplay is more predictable because puzzle validation is handled by Python.
+- The application currently runs as a local Streamlit project.
+- Formal user testing has not yet been conducted.
+
+## 13. Future Improvements
+
+- Additional rooms and puzzle types.
+- Difficulty levels.
+- Sound effects and animations.
+- Save and resume functionality.
+- Automated unit and integration tests.
+- Deployment to a hosted Streamlit environment.
+
+## 14. Academic Purpose
+
+This project demonstrates the integration of generative AI with traditional application-controlled game logic.
+
+Version 1 establishes the interactive prototype. Version 2 demonstrates improvements in user experience, puzzle validation, reliability, and fallback handling.
+
+The project also serves as a GitHub portfolio example of Python application development, AI integration, interface design, and iterative software improvement.
+
+## 15. Project Status
+
+**Version 1:** Implemented and launched successfully.
+
+**Version 2:** Implemented and passed seven final manual gameplay tests.
+
+**GitHub submission:** Pending final repository verification and upload.
